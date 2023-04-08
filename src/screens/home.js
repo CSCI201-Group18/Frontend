@@ -3,7 +3,11 @@ import evk from './evk.jpg';
 import parkside from './parkside.jpg';
 import './home.css';
 import { useState } from 'react';
+import SquareButton from '../components/Buttons/SquareButton'
 
+const RedirectFunction = () => {
+    return true;
+}
 
 function Home() {
   const [cards] = useState([
@@ -24,7 +28,6 @@ function Home() {
     },
   ])
   return (
-  
     <div>
       <section>
         <div className="container">
@@ -44,6 +47,7 @@ function Home() {
             }
           </div>
         </div>
+        <div SquareButton type="home" onClick={RedirectFunction}></div>
       </section>
     </div>
   );
