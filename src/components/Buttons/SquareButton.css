@@ -1,0 +1,16 @@
+.SquareButton{
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 18px;
+    background-color: rgb(233, 180, 6);
+}
+.SquareButton:hover{
+    transition:0.25s;
+    background-color:rgb(179, 137, 0);
+}
+
+.ImageStyle {
+    width:42px;
+    height:42px;
+}
