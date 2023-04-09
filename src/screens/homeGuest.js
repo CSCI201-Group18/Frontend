@@ -4,7 +4,6 @@ import parkside from './parkside.jpg';
 import './home.css';
 import { useState } from 'react';
 import SquareButton from '../components/Buttons/SquareButton'
-import RecButton from '../components/Buttons/RecButton';
 
 const RedirectFunction = () => {
     return true;
@@ -31,10 +30,7 @@ function Home() {
   return (
     <div>
       <div className="banner">
-          <h1>Your recommended dining hall for today is...</h1>
-      </div>
-      <div className='banner'>
-        <RecButton type="bold" name="Village"/>
+          <h1>Welcome!</h1>
       </div>
       <section>
         <div className="container">
