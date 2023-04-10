@@ -1,3 +1,7 @@
+body{
+  margin: 0px;
+}
+
 .login-banner {
   background-color: #990000;
   color: white;
@@ -9,4 +13,5 @@
   border: none;
   padding: 0 20px;
   font-family: "Klinic Slab", sans-serif;
+  margin: 0px;
 }
