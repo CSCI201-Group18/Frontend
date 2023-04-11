@@ -1,59 +1,59 @@
-import village from './village.jpg';
-import evk from './evk.jpg';
-import parkside from './parkside.jpg';
-import './home.css';
-import { useState } from 'react';
-import SquareButton from '../components/Buttons/SquareButton'
+import village from "./village.jpg";
+import evk from "./evk.jpg";
+import parkside from "./parkside.jpg";
+import "./home.css";
+import { useState } from "react";
+import RecButton from "../components/Buttons/RecButton";
+import SquareButton from "../components/Buttons/SquareButton";
 
 const RedirectFunction = () => {
-    return true;
-}
+  return true;
+};
 
-function Home() {
+function HomeGuest() {
   const [cards] = useState([
     {
-      title: 'Village',
+      title: "Village",
       //text: 'Dining Hall',
-      image: village
+      image: village,
     },
     {
-      title: 'EVK',
+      title: "EVK",
       //text: 'Dining Hall',
-      image: evk
+      image: evk,
     },
     {
-      title: 'Parkside',
-      //text: 'Dining Hall', 
-      image: parkside
+      title: "Parkside",
+      //text: 'Dining Hall',
+      image: parkside,
     },
-  ])
+  ]);
   return (
     <div>
       <div className="banner">
-          <h1>Welcome!</h1>
+        <h1>Welcome!</h1>
       </div>
       <section>
         <div className="container">
           <div className="cards">
-            {
-              cards.map((card, i) => (
-              <div key ={i} className="card">
+            {cards.map((card, i) => (
+              <div key={i} className="card">
                 <h2>{card.title}</h2>
                 <div>
-                  <img src={card.image} alt={card.title}/>
+                  <img src={card.image} alt={card.title} />
                 </div>
                 {/* <p>{card.text}</p> */}
                 <button className="btn">View More</button>
-              </div> 
-              ))
-            }
+              </div>
+            ))}
           </div>
         </div>
-        <div><SquareButton type="person" onClick={RedirectFunction}/></div>
+        <div>
+          <SquareButton type="person" onClick={RedirectFunction} />
+        </div>
       </section>
     </div>
   );
-
 }
 
-export default Home;
+export default HomeGuest;
