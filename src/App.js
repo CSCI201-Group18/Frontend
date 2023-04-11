@@ -1,11 +1,16 @@
 import "./App.css";
 
 import "bootstrap";
-import Profile from "./components/Profile";
+import LoginBox from "./components/LoginBox";
+import LoginBanner from "./components/LoginBanner";
 
 function App() {
   return (
     <>
+      <LoginBanner />
+      <div className="page-container">
+        <LoginBox />
+      </div>
     </>
     
   );
