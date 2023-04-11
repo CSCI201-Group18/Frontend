@@ -12,6 +12,7 @@ import EVKRegistered from "./components/EVKRegistered";
 import EVKUnregistered from "./components/EVKUnregistered";
 import LoginPage from "./components/LoginBanner";
 import {Router, Route, Routes} from "react-router-dom";
+import Profile from './screens/Profile'
 
 function App() {
   return (

@@ -1,17 +1,8 @@
 import './Profile.css'
-import './Buttons/RecButton'
-import './Buttons/SquareButton'
-import { useNavigate } from 'react-router-dom';
-import SquareButton from './Buttons/SquareButton';
+import SquareButton from '../components/Buttons/SquareButton'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
-
-  const navigate = useNavigate();
-  const redirect = () => {
-    // feed in the redirect destination
-    navigate("/testHomePage");
-  }
-
 
 
   return (
@@ -20,7 +11,7 @@ const Profile = () => {
             <div id='left-banner'>
                 <img id='profile-pic' src='/profile.png' alt='profile-pic'/>
                 <button class='button-background' id='banner-icon-1'>{"EMAIL"}</button>
-                <button class='button-background' id='banner-icon-2' onClick={redirect}>LOGOUT</button>
+                <Link href="homeGuest.js" id='banner-icon-2'><button class='button-background' >LOGOUT</button></Link>
             </div>
             <div id='reviewBox'>
               <div class='reviewItem'>
@@ -44,7 +35,9 @@ const Profile = () => {
               <div class='reviewItem'></div>
               <div class='reviewItem'></div>
             </div>
-            <div id="homeButton"><SquareButton type="home" onClick = {true}/></div>
+            <div id="homeButton">
+              <Link href="home.js"><SquareButton type="home"/></Link>
+            </div>
         </div>
     </>
   )
