@@ -1,8 +1,8 @@
 import "./App.css";
 
 import "bootstrap";
-import Home from "./screens/home";
-import HomeGuest from "./screens/homeGuest";
+import Home from "./screens/Home";
+import HomeGuest from "./screens/HomeGuest";
 import Profile from "./screens/Profile";
 import VillageRegistered from "./components/VillageRegistered";
 import VillageUnregistered from "./components/VillageUnregistered";
