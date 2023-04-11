@@ -3,23 +3,9 @@ import LoginBanner from "./LoginBanner";
 import "./LoginBanner.css";
 import StarRating from "./StarRating";
 import "./DiningHallPageUnregistered.css";
+import { getMealTime } from "./EVKUnregistered";
 
-function getMealTime() {
-  const now = new Date();
-  const hours = now.getHours();
-
-  if (hours >= 7 && hours < 10.5) {
-    return "Breakfast";
-  } else if (hours >= 11 && hours < 16) {
-    return "Lunch";
-  } else if (hours >= 16 && hours < 22) {
-    return "Dinner";
-  } else {
-    return "Closed";
-  }
-}
-
-function EVKUnregistered() {
+function VillageUnregistered() {
   const currentMealTime = getMealTime();
   const foodItems = [
     { name: "Spaghetti", rating: 4 },
@@ -37,12 +23,11 @@ function EVKUnregistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Everybody's Kitchen - Today's {currentMealTime} </p>
+        <p>Village Dining Hall - Today's {currentMealTime} </p>
       </div>
 
       <div className="food-list">
         <div className="food-item">
-          
           <span className="food-avg-rating">Average</span>
         </div>
 
@@ -57,5 +42,4 @@ function EVKUnregistered() {
   );
 }
 
-export default EVKUnregistered;
-export { getMealTime };
+export default VillageUnregistered;

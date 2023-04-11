@@ -6,7 +6,7 @@ import "./DiningHallPageRegistered.css";
 import { Link } from "react-router-dom";
 import "./LoginBox.css";
 
-function EVKRegistered() {
+function VillageRegistered() {
   const currentMealTime = getMealTime();
   const foodItems = [
     { name: "Spaghetti", rating: 2, avg: 4 },
@@ -24,7 +24,7 @@ function EVKRegistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Everybody's Kitchen - Today's {currentMealTime} </p>
+        <p>Village Dining Hall - Today's {currentMealTime} </p>
       </div>
 
       <div className="food-list">
@@ -52,4 +52,4 @@ function EVKRegistered() {
   );
 }
 
-export default EVKRegistered;
+export default VillageRegistered;
