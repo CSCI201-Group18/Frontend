@@ -42,6 +42,15 @@ body{
     border: none;
 }
 
+.email-background{
+    width:270px;
+    height:40px;
+    border-radius:18px;
+    background-color: rgb(233,180,6);
+    text-align:center;
+    border: none;
+    font-size:20px;
+}
 
 .button-background{
     width:270px;

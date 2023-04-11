@@ -10,8 +10,8 @@ const Profile = () => {
         <div id='body-grid-container'>
             <div id='left-banner'>
                 <img id='profile-pic' src='/profile.png' alt='profile-pic'/>
-                <button class='button-background' id='banner-icon-1'>{"EMAIL"}</button>
-                <Link href="homeGuest.js" id='banner-icon-2'><button class='button-background' >LOGOUT</button></Link>
+                <button class='email-background' id='banner-icon-1'>{"EMAIL"}</button>
+                <Link to="/" id='banner-icon-2'><button class='button-background' >LOGOUT</button></Link>
             </div>
             <div id='reviewBox'>
               <div class='reviewItem'>
@@ -36,7 +36,7 @@ const Profile = () => {
               <div class='reviewItem'></div>
             </div>
             <div id="homeButton">
-              <Link href="home.js"><SquareButton type="home"/></Link>
+              <Link to="/homer"><SquareButton type="home"/></Link>
             </div>
         </div>
     </>
