@@ -1,0 +1,32 @@
+.food-list {
+  font-family: "Klinic-Slab", sans-serif;
+  margin-left: 40px;
+  margin-top: 50px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+}
+
+.food-item {
+  font-family: "Klinic-Slab", sans-serif;
+  margin-right: 30%;
+  margin-bottom: 30px;
+
+}
+
+.food-name {
+  font-family: "Klinic-Slab", sans-serif;
+  margin-right: 50px;
+}
+
+.food-avg-rating {
+  font-family: "Klinic-Slab", sans-serif;
+  width: 50%;
+  margin-left: 65px;
+}
+
+.item-header {
+  font-family: "Klinic-Slab", sans-serif;
+}
