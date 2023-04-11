@@ -49,6 +49,7 @@ body{
     border-radius:18px;
     background-color: rgb(233,180,6);
     text-align:center;
+    border: none;
     font-size:20px;
 }
 .button-background:hover {
