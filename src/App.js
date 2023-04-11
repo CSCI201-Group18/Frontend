@@ -15,7 +15,6 @@ import { Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/evku" element={<EVKUnregistered />} />
@@ -29,7 +28,6 @@ function App() {
         <Route path="/homeu" element={<HomeGuest />} />
         <Route path="*" element={<LoginPage />} />
       </Routes>
-    </Router>
   );
 }
 
