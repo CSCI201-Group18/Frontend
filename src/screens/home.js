@@ -1,31 +1,29 @@
 import village from './village.jpg';
 import evk from './evk.jpg';
 import parkside from './parkside.jpg';
-import './home.css';
+import './Home.css';
 import { useState } from 'react';
 import SquareButton from '../components/Buttons/SquareButton'
 import RecButton from '../components/Buttons/RecButton';
+import { Link } from "react-router-dom";
 
-const RedirectFunction = () => {
-    return true;
-}
 
 function Home() {
   const [cards] = useState([
     {
       title: 'Village',
-      //text: 'Dining Hall',
-      image: village
+      image: village,
+      link: "/vilr",
     },
     {
       title: 'EVK',
-      //text: 'Dining Hall',
-      image: evk
+      image: evk,
+      link: "/evkr",
     },
     {
       title: 'Parkside',
-      //text: 'Dining Hall', 
-      image: parkside
+      image: parkside,
+      link: "/parkr",
     },
   ])
   return (
@@ -46,14 +44,13 @@ function Home() {
                 <div>
                   <img src={card.image} alt={card.title}/>
                 </div>
-                {/* <p>{card.text}</p> */}
-                <button className="btn">View More</button>
+                <Link to={card.link}><button className="btn">View More</button></Link>
               </div> 
               ))
             }
           </div>
         </div>
-        <div><SquareButton type="person" onClick={RedirectFunction}/></div>
+        <div><Link to="/profile"><SquareButton type="person"/></Link></div>
       </section>
     </div>
   );
