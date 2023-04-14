@@ -11,7 +11,7 @@ const Profile = () => {
           <button class="button-background" id="banner-icon-1">
             {"EMAIL"}
           </button>
-          <Link href="homeGuest.js" id="banner-icon-2">
+          <Link to="/" id="banner-icon-2">
             <button class="button-background">LOGOUT</button>
           </Link>
         </div>
@@ -38,7 +38,7 @@ const Profile = () => {
           <div class="reviewItem"></div>
         </div>
         <div id="homeButton">
-          <Link to="/">
+          <Link to="/homer">
             <SquareButton type="home" />
           </Link>
         </div>
