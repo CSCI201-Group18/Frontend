@@ -43,7 +43,7 @@ function LoginPage() {
         </label>
         <br />
         <button type="submit" className="login-page-button">
-          <Link to="/homepage" className="login-link">
+          <Link to="/homer" className="login-link">
             Login
           </Link>
         </button>
