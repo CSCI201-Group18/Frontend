@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import LoginBanner from "./LoginBanner";
-import "./LoginBanner.css";
-import StarRating from "./StarRating";
+import LoginBanner from "../components/LoginBanner";
+import "../components/LoginBanner.css";
+import StarRating from "../components/StarRating";
 import "./DiningHallPageUnregistered.css";
 import { getMealTime } from "./EVKUnregistered";
 
-function ParksideUnregistered() {
+function VillageUnregistered() {
   const currentMealTime = getMealTime();
   const foodItems = [
     { name: "Spaghetti", rating: 4 },
@@ -23,7 +23,7 @@ function ParksideUnregistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Parkside Dining Hall - Today's {currentMealTime} </p>
+        <p>Village Dining Hall - Today's {currentMealTime} </p>
       </div>
 
       <div className="food-list">
@@ -42,4 +42,4 @@ function ParksideUnregistered() {
   );
 }
 
-export default ParksideUnregistered;
+export default VillageUnregistered;

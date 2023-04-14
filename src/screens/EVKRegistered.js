@@ -1,12 +1,12 @@
 import React from "react";
 import EVKUnregistered from "./EVKUnregistered";
 import { getMealTime } from "./EVKUnregistered";
-import StarRating from "./StarRating";
+import StarRating from "../components/StarRating";
 import "./DiningHallPageRegistered.css";
 import { Link } from "react-router-dom";
 import "./LoginBox.css";
 
-function VillageRegistered() {
+function EVKRegistered() {
   const currentMealTime = getMealTime();
   const foodItems = [
     { name: "Spaghetti", rating: 2, avg: 4 },
@@ -24,7 +24,7 @@ function VillageRegistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Village Dining Hall - Today's {currentMealTime} </p>
+        <p>Everybody's Kitchen - Today's {currentMealTime} </p>
       </div>
 
       <div className="food-list">
@@ -52,4 +52,4 @@ function VillageRegistered() {
   );
 }
 
-export default VillageRegistered;
+export default EVKRegistered;

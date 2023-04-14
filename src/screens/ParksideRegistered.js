@@ -1,7 +1,7 @@
 import React from "react";
 import EVKUnregistered from "./EVKUnregistered";
 import { getMealTime } from "./EVKUnregistered";
-import StarRating from "./StarRating";
+import StarRating from "../components/StarRating";
 import "./DiningHallPageRegistered.css";
 import { Link } from "react-router-dom";
 import "./LoginBox.css";

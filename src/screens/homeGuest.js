@@ -1,29 +1,28 @@
 import village from "./village.jpg";
 import evk from "./evk.jpg";
 import parkside from "./parkside.jpg";
-import "./Home.css";
+import "./home.css";
 import { useState } from "react";
 import RecButton from "../components/Buttons/RecButton";
 import SquareButton from "../components/Buttons/SquareButton";
 import { Link } from "react-router-dom";
-
 
 function HomeGuest() {
   const [cards] = useState([
     {
       title: "Village",
       image: village,
-      link: "vilu"
+      link: "/vilu",
     },
     {
       title: "EVK",
       image: evk,
-      link: "evku"
+      link: "/evku",
     },
     {
       title: "Parkside",
       image: parkside,
-      link: "parku"
+      link: "/parku",
     },
   ]);
   return (
@@ -40,13 +39,17 @@ function HomeGuest() {
                 <div>
                   <img src={card.image} alt={card.title} />
                 </div>
-                <Link to={card.link}><button className="btn">View More</button></Link>
+                <Link to={card.link}>
+                  <button className="btn">View More</button>
+                </Link>
               </div>
             ))}
           </div>
         </div>
         <div>
-        <Link to="/profile"><SquareButton type="person"/></Link>
+          <Link to="/profile">
+            <SquareButton type="person" />
+          </Link>
         </div>
       </section>
     </div>
