@@ -3,11 +3,20 @@ import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import LoginBanner from "../components/LoginBanner";
+import Profile from "./Profile";
+import Home from "./home";
+import EVKRegistered from "./EVKRegistered";
+import ParksideRegistered from "./ParksideRegistered";
+import VillageRegistered from "./VillageRegistered";
+import { UserContext } from "../components/UserContext";
+import { useContext } from "react";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [invalidLogin, setInvalidLogin] = useState(false);
+  const { setEmail } = useContext(UserContext);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -19,9 +28,13 @@ function LoginPage() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    navigate("/dashboard");
-    console.log("Username:", username);
-    console.log("Password:", password);
+    if (username === "username" && password === "password") {
+      setEmail(username);
+      navigate("/homer");
+    } else {
+      console.log("Wrong login");
+      setInvalidLogin(true);
+    }
   };
 
   return (
@@ -43,19 +56,14 @@ function LoginPage() {
         </label>
         <br />
         <button type="submit" className="login-page-button">
-          <Link to="/homer" className="login-link">
-            Login
-          </Link>
+          Login
         </button>
+        {invalidLogin && <p>Invalid login credentials.</p>}
         <button className="login-page-button">
           <Link to="/registration">Sign Up</Link>
         </button>
         <button className="">
           <Link to="/homeu">Continue as Guest</Link>
-        </button>
-
-        <button className="arrow-button">
-          <img src="/vector3.png" alt="Button icon" className="arrow-image" />
         </button>
       </form>
     </>

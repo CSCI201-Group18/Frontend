@@ -6,8 +6,11 @@ import { useState } from "react";
 import SquareButton from "../components/Buttons/SquareButton";
 import RecButton from "../components/Buttons/RecButton";
 import { Link } from "react-router-dom";
+import { UserContext } from "../components/UserContext";
+import { useContext } from "react";
 
 function Home() {
+  const { email } = useContext(UserContext);
   const [cards] = useState([
     {
       title: "Village",

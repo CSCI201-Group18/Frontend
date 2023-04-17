@@ -1,22 +1,22 @@
 import "./Profile.css";
 import SquareButton from "../components/Buttons/SquareButton";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-import $ from 'jquery';
-
-
+import { useNavigate } from "react-router-dom";
+import $ from "jquery";
+import { useContext } from "react";
+import { UserContext } from "../components/UserContext";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { email } = useContext(UserContext);
 
   const handleLogout = () => {
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   const handleHome = () => {
-    navigate('/homer');
-  }
-
+    navigate("/homer");
+  };
 
   return (
     <>
@@ -26,10 +26,13 @@ const Profile = () => {
           <button class="email-background" id="banner-icon-1">
             {"EMAIL"}
           </button>
-          <button class="button-background" id="banner-icon-2" onClick={handleLogout}>
+          <button
+            class="button-background"
+            id="banner-icon-2"
+            onClick={handleLogout}
+          >
             LOGOUT
           </button>
-          
         </div>
         <div id="reviewBox">
           <div class="reviewItem">
@@ -54,7 +57,7 @@ const Profile = () => {
           <div class="reviewItem"></div>
         </div>
         <div id="homeButton">
-            <SquareButton type="home" onClick = {handleHome}/>
+          <SquareButton type="home" onClick={handleHome} />
         </div>
       </div>
     </>
