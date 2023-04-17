@@ -1,6 +1,5 @@
 import "./Profile.css";
 import SquareButton from "../components/Buttons/SquareButton";
-import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 
@@ -17,6 +16,33 @@ const Profile = () => {
     navigate('/homer');
   }
 
+  const getReview = () => {
+    $.ajax({
+      url: "",
+      method: "GET",
+      dataType: "json",
+      data: {
+        userEmail: ""
+      },
+      success: function(data){
+        $.each(data, function(index, item){
+          var date = item.date;
+          var dinningHall = item.dinningHall;
+          var food = item.food;
+          var star = item.star;
+
+          $('#reviewBox').append(
+            '<div class="reviewItem">'+
+              '<div class="reviewDate">'+date+'</div>'+
+              '<div class="reviewHall">'+dinningHall+'</div>'+
+              '<div class="reviewFood">'+food+'</div>'+
+              '<div class="reviewStar">'+star+'</div>'+
+            '</div>'
+          )
+        })
+      }
+    })
+  }
 
   return (
     <>
@@ -37,13 +63,6 @@ const Profile = () => {
             <div class="reviewHall">{"DINNING-HALL"}</div>
             <div class="reviewFood">{"FOOD-ITEM"}</div>
             <div class="reviewStar">{"STARS"}</div>
-            <div class="tagGrid">
-              <div class="tag">{"THIS FOOD SUCKS"}</div>
-              <div class="tag">{"THIS FOOD SUCKS"}</div>
-              <div class="tag">{"THIS FOOD SUCKS"}</div>
-              <div class="tag">{"THIS FOOD SUCKS"}</div>
-              <div class="tag">{"THIS FOOD SUCKS"}</div>
-            </div>
           </div>
           <div class="reviewItem"></div>
           <div class="reviewItem"></div>
