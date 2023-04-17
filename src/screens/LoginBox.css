@@ -62,7 +62,7 @@
   background-color: #0050a0;
 }
 
-p {
+.invalid-login-text {
   font-family: "Klinic Slab", sans-serif;
   margin-bottom: 15px;
   color: red;

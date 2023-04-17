@@ -23,7 +23,7 @@ function ParksideUnregistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Parkside Dining Hall - Today's {currentMealTime} </p>
+        <p>Parkside Dining Hall - {currentMealTime} </p>
       </div>
 
       <div className="food-list">

@@ -58,7 +58,10 @@ function LoginPage() {
         <button type="submit" className="login-page-button">
           Login
         </button>
-        {invalidLogin && <p>Invalid login credentials.</p>}
+        <br />
+        {invalidLogin && (
+          <span className="invalid-login-text">Invalid login credentials.</span>
+        )}
         <button className="login-page-button">
           <Link to="/registration">Sign Up</Link>
         </button>

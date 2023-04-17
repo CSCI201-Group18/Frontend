@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 import "./LoginBox.css";
 import { UserContext } from "../components/UserContext";
 import { useContext } from "react";
-
+import SquareButton from "../components/Buttons/SquareButton";
 
 function EVKRegistered() {
   const currentMealTime = getMealTime();
   const { email } = useContext(UserContext);
-  
+
   const foodItems = [
     { name: "Spaghetti", rating: 2, avg: 4 },
     { name: "Chicken Parmesan", rating: 4, avg: 5 },
@@ -29,7 +29,7 @@ function EVKRegistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Everybody's Kitchen - Today's {currentMealTime} </p>
+        <p>Everybody's Kitchen - {currentMealTime} </p>
       </div>
 
       <div className="food-list">
@@ -49,12 +49,15 @@ function EVKRegistered() {
           </div>
         ))}
       </div>
-      <Link to="/newrating">
-        <button className="new-rating-button">New Rating</button>
-      </Link>
-      <button className="arrow-button">
-        <img src="/vector3.png" alt="Button icon" className="arrow-image" />
-      </button>
+      <div className="button-container">
+        <Link to="/newrating">
+          <button className="new-rating-button">New Rating</button>
+        </Link>
+
+        <Link to="/homer">
+          <SquareButton type="home" />
+        </Link>
+      </div>
     </>
   );
 }

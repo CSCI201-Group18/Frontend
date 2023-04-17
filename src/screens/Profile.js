@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../components/UserContext";
-import { useNavigate } from 'react-router-dom';
-import $ from 'jquery';
-
-
+import $ from "jquery";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -21,34 +18,41 @@ const Profile = () => {
     navigate("/homer");
   };
 
-
   const getReview = () => {
     $.ajax({
       url: "",
       method: "GET",
       dataType: "json",
       data: {
-        userEmail: ""
+        userEmail: "",
       },
-      success: function(data){
-        $.each(data, function(index, item){
+      success: function (data) {
+        $.each(data, function (index, item) {
           var date = item.date;
           var dinningHall = item.dinningHall;
           var food = item.food;
           var star = item.star;
 
-          $('#reviewBox').append(
-            '<div class="reviewItem">'+
-              '<div class="reviewDate">'+date+'</div>'+
-              '<div class="reviewHall">'+dinningHall+'</div>'+
-              '<div class="reviewFood">'+food+'</div>'+
-              '<div class="reviewStar">'+star+'</div>'+
-            '</div>'
-          )
-        })
-      }
-    })
-  }
+          $("#reviewBox").append(
+            '<div class="reviewItem">' +
+              '<div class="reviewDate">' +
+              date +
+              "</div>" +
+              '<div class="reviewHall">' +
+              dinningHall +
+              "</div>" +
+              '<div class="reviewFood">' +
+              food +
+              "</div>" +
+              '<div class="reviewStar">' +
+              star +
+              "</div>" +
+              "</div>"
+          );
+        });
+      },
+    });
+  };
 
   return (
     <>
