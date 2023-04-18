@@ -1,10 +1,11 @@
 import "./Profile.css";
 import SquareButton from "../components/Buttons/SquareButton";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../components/UserContext";
 import $ from "jquery";
+
+
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -20,39 +21,63 @@ const Profile = () => {
 
   const getReview = () => {
     $.ajax({
-      url: "",
+      url: "http://localhost:8080/api/getUserReviews",
       method: "GET",
       dataType: "json",
       data: {
-        userEmail: "",
+        email: email
       },
       success: function (data) {
-        $.each(data, function (index, item) {
-          var date = item.date;
-          var dinningHall = item.dinningHall;
-          var food = item.food;
-          var star = item.star;
-
-          $("#reviewBox").append(
-            '<div class="reviewItem">' +
-              '<div class="reviewDate">' +
-              date +
-              "</div>" +
-              '<div class="reviewHall">' +
-              dinningHall +
-              "</div>" +
-              '<div class="reviewFood">' +
-              food +
-              "</div>" +
-              '<div class="reviewStar">' +
-              star +
-              "</div>" +
-              "</div>"
-          );
-        });
-      },
+        $("#reviewBox").html = "";
+        if(data.length == 0){
+          alert("You currently have not written any review!")
+        }
+        else{
+          $.each(data, function (index, item) {
+            var diningHallID = item.diningHallID;
+            var diningHall = "";
+            var food = item.mealName;
+            var starCount = item.star;
+  
+            const filledStars = "★".repeat(Math.floor(starCount));
+            const emptyStars = "★".repeat(Math.floor(5 - starCount));
+  
+            if(diningHallID === 1){
+              diningHall = "USC VILLAGE DINING HALL";
+            }
+            else if(diningHallID === 2){
+              diningHall = "PARKSIDE RESTAURANT & GRILL";
+            }
+            else {
+              diningHall = "EVERYBODY'S KITCHEN";
+            }
+            
+            $("#reviewBox").append(
+              '<div class="reviewItem">' +
+                '<div class="reviewHall">' +
+                  diningHall +
+                '</div>' +
+                '<div class="reviewFood">' +
+                  food + 
+                '</div>' +
+                '<div class="reviewStar">' +
+                  '<span class="starStyles">'+filledStars+'</span>' +
+                  '<span class="emptyStarStyles">'+emptyStars+'</span>' +
+                '</div>' +
+              '</div>'
+            );
+          });
+        }
+      }
     });
   };
+
+
+  useEffect(() => {
+    getReview();
+  }, []);
+
+  var star = 3;
 
   return (
     <>
@@ -71,19 +96,6 @@ const Profile = () => {
           </button>
         </div>
         <div id="reviewBox">
-          <div class="reviewItem">
-            <div class="reviewDate">{"DATE"}</div>
-            <div class="reviewHall">{"DINNING-HALL"}</div>
-            <div class="reviewFood">{"FOOD-ITEM"}</div>
-            <div class="reviewStar">{"STARS"}</div>
-          </div>
-          <div class="reviewItem"></div>
-          <div class="reviewItem"></div>
-          <div class="reviewItem"></div>
-          <div class="reviewItem"></div>
-          <div class="reviewItem"></div>
-          <div class="reviewItem"></div>
-          <div class="reviewItem"></div>
         </div>
         <div id="homeButton">
           <SquareButton type="home" onClick={handleHome} />

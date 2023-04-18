@@ -2,7 +2,7 @@ body{
     height: 100vh;
     width: 100vw;
     margin:0px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
 }
 
 #body-grid-container {
@@ -28,7 +28,7 @@ body{
     grid-row-end: 2;
     background-color: rgb(252, 252, 242);
     width: 90%;
-    height: 90%;
+    height: 80%;
     justify-self: center;
     align-self: center;
     border-radius: 25px;
@@ -91,7 +91,7 @@ body{
 
 .reviewItem {
     display:grid;
-    width: 100%;
+    width: 90%;
     height: 120px;
     border-radius: 25px;
     background-color: rgba(180, 180, 180, 0.627);
@@ -100,18 +100,12 @@ body{
     
 }
 
-.reviewDate {
-    justify-self: center;
-    align-self: center;
-    grid-row-start: 1;
-    grid-column-start: 1;
-}
-
 .reviewHall {
     justify-self: center;
     align-self: center;
     grid-row-start: 1;
-    grid-column-start: 2;
+    grid-column-start: 1;
+    grid-column-end:3;
 }
 
 .reviewFood {
@@ -126,6 +120,7 @@ body{
     align-self: center;
     grid-row-start: 1;
     grid-column-start: 4;
+    grid-column-end: 5;
 }
 
 #homeButton {
@@ -135,4 +130,16 @@ body{
     align-self: last baseline;
     position: relative;
     bottom: 1%;
+}
+
+
+
+.starStyles{
+    color: #edb009;
+    font-size: 40px;
+}
+
+.emptyStarStyles{
+    color: #787777;
+    font-size: 40px;
 }
