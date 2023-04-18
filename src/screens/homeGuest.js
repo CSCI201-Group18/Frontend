@@ -1,9 +1,8 @@
 import village from "./village.jpg";
 import evk from "./evk.jpg";
 import parkside from "./parkside.jpg";
-import "./home.css";
-import { useState } from "react";
-import RecButton from "../components/Buttons/RecButton";
+import "./Home.css";
+import { useState} from "react";
 import SquareButton from "../components/Buttons/SquareButton";
 import { Link } from "react-router-dom";
 
@@ -47,7 +46,7 @@ function HomeGuest() {
           </div>
         </div>
         <div>
-          <Link to="/profile">
+          <Link to="/dashboard">
             <SquareButton type="person" />
           </Link>
         </div>
