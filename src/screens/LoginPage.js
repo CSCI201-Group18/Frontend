@@ -65,7 +65,7 @@ function LoginPage() {
         <button className="login-page-button">
           <Link to="/registration">Sign Up</Link>
         </button>
-        <button className="">
+        <button type="button" className="login-page-button">
           <Link to="/homeu">Continue as Guest</Link>
         </button>
       </form>
