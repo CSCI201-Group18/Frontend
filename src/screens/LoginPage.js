@@ -62,7 +62,7 @@ function LoginPage() {
         {invalidLogin && (
           <span className="invalid-login-text">Invalid login credentials.</span>
         )}
-        <button className="login-page-button">
+        <button type="button" className="login-page-button">
           <Link to="/registration">Sign Up</Link>
         </button>
         <button type="button" className="login-page-button">
