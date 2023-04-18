@@ -51,7 +51,7 @@ function HomeGuest() {
           </div>
         </div>
         <div>
-          <Link to="/profile">
+          <Link to="/dashboard">
             <SquareButton type="person" />
           </Link>
         </div>

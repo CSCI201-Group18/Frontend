@@ -109,3 +109,11 @@ img{
 .buttonText {
 font-size: 5pt;
 }
+
+.home-text{
+  background-color: #990000;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  padding-bottom: 15px;
+}
