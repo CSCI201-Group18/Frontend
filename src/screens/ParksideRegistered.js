@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../components/UserContext";
 import { useContext } from "react";
 import "./LoginBox.css";
+import SquareButton from "../components/Buttons/SquareButton";
+
+
 
 function ParksideRegistered() {
   const { email } = useContext(UserContext);
@@ -50,9 +53,9 @@ function ParksideRegistered() {
       <Link to="/newrating">
         <button className="new-rating-button">New Rating</button>
       </Link>
-      <button className="arrow-button">
-        <img src="/vector3.png" alt="Button icon" className="arrow-image" />
-      </button>
+      <Link to="/homer">
+          <SquareButton type="home" />
+      </Link>
     </>
   );
 }

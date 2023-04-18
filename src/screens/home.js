@@ -43,6 +43,9 @@ function Home() {
   else if (mealID === 3){
     recommendedDiningHall = "EVK";
   }
+  else{
+    recommendedDiningHall = "Village";
+  }
   const [cards] = useState([
     {
       title: "Village",

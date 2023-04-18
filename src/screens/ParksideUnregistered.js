@@ -4,6 +4,8 @@ import "../components/LoginBanner.css";
 import StarRating from "../components/StarRating";
 import "./DiningHallPageUnregistered.css";
 import { getMealTime } from "./EVKUnregistered";
+import SquareButton from "../components/Buttons/SquareButton";
+import { Link } from "react-router-dom";
 
 function ParksideUnregistered() {
   const currentMealTime = getMealTime();
@@ -37,6 +39,11 @@ function ParksideUnregistered() {
             <span className="food-avg-rating">{item.rating}/5.0</span>
           </div>
         ))}
+      </div>
+      <div className="button-container">
+        <Link to="/homeu">
+          <SquareButton type="home" />
+        </Link>
       </div>
     </>
   );
