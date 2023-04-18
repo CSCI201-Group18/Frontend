@@ -9,11 +9,11 @@ function getMealTime() {
   const hours = now.getHours();
 
   if (hours >= 7 && hours < 10.5) {
-    return "Breakfast";
+    return "Today's Breakfast";
   } else if (hours >= 11 && hours < 16) {
-    return "Lunch";
+    return "Today's Lunch";
   } else if (hours >= 16 && hours < 22) {
-    return "Dinner";
+    return "Today's Dinner";
   } else {
     return "Closed";
   }
@@ -37,7 +37,7 @@ function EVKUnregistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Everybody's Kitchen - Today's {currentMealTime} </p>
+        <p>Everybody's Kitchen - {currentMealTime} </p>
       </div>
 
       <div className="food-list">

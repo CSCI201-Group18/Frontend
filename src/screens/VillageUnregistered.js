@@ -23,7 +23,7 @@ function VillageUnregistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Village Dining Hall - Today's {currentMealTime} </p>
+        <p>Village Dining Hall - {currentMealTime} </p>
       </div>
 
       <div className="food-list">

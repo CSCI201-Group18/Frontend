@@ -29,6 +29,11 @@ function HomeGuest() {
       <div className="banner">
         <h1>Welcome!</h1>
       </div>
+      <div className="home-text">
+        <p>
+          Select a dining hall to view what people rated today's menu items!
+        </p>
+      </div>
       <section>
         <div className="container">
           <div className="cards">
@@ -46,7 +51,7 @@ function HomeGuest() {
           </div>
         </div>
         <div>
-          <Link to="/dashboard">
+          <Link to="/profile">
             <SquareButton type="person" />
           </Link>
         </div>

@@ -6,43 +6,8 @@ import { useState} from "react";
 import SquareButton from "../components/Buttons/SquareButton";
 import RecButton from "../components/Buttons/RecButton";
 import { Link } from "react-router-dom";
-import React from 'react';
-import $ from 'jquery';
-import jQuery from 'jquery'
- 
-function Home() {
-  jQuery.extend({
-    getValues: function(url) {
-        var result = null;
-        $.ajax({
-            url: url,
-            type: 'get',
-            dataType: 'json',
-            async: false,
-            data : {
-              id: 1
-            },
-            success: function(data) {
-              console.log(data);
-                result = data.hall_id;
-            }
-        });
-      return result;
-    }
-  });
-  var mealID = $.getValues("http://localhost:8080/api/getHighestRated/");
-  
-  var recommendedDiningHall;
-  if (mealID === 1){
-    recommendedDiningHall = "Village";
-  }
-  else if (mealID === 2){
-    recommendedDiningHall = "Parkside";
-  }
-  else if (mealID === 3){
-    recommendedDiningHall = "EVK";
-  }
 
+function Home() {
   const [cards] = useState([
     {
       title: "Village",

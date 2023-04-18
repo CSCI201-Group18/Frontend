@@ -13,23 +13,29 @@ import EVKUnregistered from "./screens/EVKUnregistered";
 import LoginPage from "./screens/LoginPage";
 import { Router, Route, Routes } from "react-router-dom";
 import Registration from "./screens/Registration";
+import NewRating from "./screens/NewRating";
+import { useState } from "react";
+import { UserProvider } from "./components/UserContext";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/evku" element={<EVKUnregistered />} />
-      <Route path="/evkr" element={<EVKRegistered />} />
-      <Route path="/parku" element={<ParksideUnregistered />} />
-      <Route path="/parkr" element={<ParksideRegistered />} />
-      <Route path="/vilu" element={<VillageUnregistered />} />
-      <Route path="/vilr" element={<VillageRegistered />} />
-      <Route path="/homer" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/homeu" element={<HomeGuest />} />
-      <Route path="/registration" element={<Registration />} />
-      <Route path="*" element={<LoginPage />} />
-    </Routes>
+    <UserProvider>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/evku" element={<EVKUnregistered />} />
+        <Route path="/evkr" element={<EVKRegistered />} />
+        <Route path="/parku" element={<ParksideUnregistered />} />
+        <Route path="/parkr" element={<ParksideRegistered />} />
+        <Route path="/vilu" element={<VillageUnregistered />} />
+        <Route path="/vilr" element={<VillageRegistered />} />
+        <Route path="/homer" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/homeu" element={<HomeGuest />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/newrating" element={<NewRating />} />
+        <Route path="*" element={<LoginPage />} />
+      </Routes>
+    </UserProvider>
   );
 }
 

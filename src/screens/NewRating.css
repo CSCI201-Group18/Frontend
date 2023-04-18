@@ -1,0 +1,76 @@
+.x-button {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #990000;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  border-color: #fff;
+  border: 1px;
+}
+
+.x-button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.rating-menu {
+  margin-top: 5%;
+  align-items: center;
+  text-align: center;
+  font-family: "Klinic Slab", sans-serif;
+  font-size: 30px;
+}
+
+.button-container {
+  margin-bottom: 2%;
+  align-items: center;
+}
+
+.hall-button {
+  background-color: #FFC72C;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 2%;
+  margin-top: 2%;
+}
+
+.hall-button.selected {
+  background-color: #6b6b6c;
+}
+
+.hall-button:hover:not(.selected) {
+  background-color: #FFC72C;
+}
+
+.submit-rating-button {
+  background-color: #990000;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: none;
+  border: 0;
+  border-radius: 20px;
+  height: 80px;
+  width: 160px;
+  font-size: large;
+}
+
+.star-buttons {
+  margin-top: 3%;
+}
+
+.star-buttons:hover {
+  cursor: default;
+}
