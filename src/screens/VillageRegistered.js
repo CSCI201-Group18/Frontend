@@ -5,8 +5,11 @@ import StarRating from "../components/StarRating";
 import "./DiningHallPageRegistered.css";
 import { Link } from "react-router-dom";
 import "./LoginBox.css";
+import { UserContext } from "../components/UserContext";
+import { useContext } from "react";
 
 function VillageRegistered() {
+  const { email } = useContext(UserContext);
   const currentMealTime = getMealTime();
   const foodItems = [
     { name: "Spaghetti", rating: 2, avg: 4 },
@@ -24,7 +27,7 @@ function VillageRegistered() {
   return (
     <>
       <div className="login-banner">
-        <p>Village Dining Hall - Today's {currentMealTime} </p>
+        <p>Village Dining Hall - {currentMealTime} </p>
       </div>
 
       <div className="food-list">
@@ -44,7 +47,9 @@ function VillageRegistered() {
           </div>
         ))}
       </div>
-      <button className="new-rating-button">New Rating</button>
+      <Link to="/newrating">
+        <button className="new-rating-button">New Rating</button>
+      </Link>
       <button className="arrow-button">
         <img src="/vector3.png" alt="Button icon" className="arrow-image" />
       </button>
