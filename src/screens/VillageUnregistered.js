@@ -32,11 +32,23 @@ function VillageUnregistered() {
         $.each(results, function (index, item){
           var foodItem = item.mealName;
           var starCount = item.star;
+          
+          $("#reviewBox").append(
+            '<div class="reviewItem">' + 
+              '<div class ="reviewFood">Food Item</div>'+ 
+              '<div class="reviewStar">Rating</div>' +
+            '</div>'
+          );
 
           $("#reviewBox").append(
             '<div class="reviewItem">' + 
-              'div class ="reviewFood">' + foodItem + '<div>'
-              + '<div class="reviewStar">' + starCount + '/5</div>'
+              '<div class ="reviewFood">' + 
+                foodItem + 
+              '</div>'+ 
+              '<div class="reviewStar">' + 
+                starCount + 
+              '/5</div>' +
+            '</div>'
           );
         }) 
       }
@@ -64,7 +76,7 @@ function VillageUnregistered() {
        <div className="login-banner">
         <p>Village Dining Hall - {currentMealTime} </p>
       </div>
-      
+
       <div id="reviewBox">
       </div>
      {/*  <div className="food-list">
