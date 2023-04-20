@@ -6,10 +6,57 @@ import "./DiningHallPageUnregistered.css";
 import { getMealTime } from "./EVKUnregistered";
 import SquareButton from "../components/Buttons/SquareButton";
 import { Link } from "react-router-dom";
+import $ from 'jquery';
+
+
+//get all reviews for a specific dining hall
+//getHallReviews - data:1
+//1 - village
+//2: parkside
+//3: evk
 
 function VillageUnregistered() {
   const currentMealTime = getMealTime();
-  const foodItems = [
+
+
+  const getReview = () => {
+    $.ajax({
+    url : 'http://localhost:8080/api/getHallReviews',
+    method : "GET",
+    dataType : 'json',
+    data : {
+        id : 1
+    },
+      success : function(results) {
+        $("#reviewBox").html = "";
+        $.each(results, function (index, item){
+          var foodItem = item.mealName;
+          var starCount = item.star;
+          
+          $("#reviewBox").append(
+            '<div class="reviewItem">' + 
+              '<div class ="reviewFood">Food Item</div>'+ 
+              '<div class="reviewStar">Rating</div>' +
+            '</div>'
+          );
+
+          $("#reviewBox").append(
+            '<div class="reviewItem">' + 
+              '<div class ="reviewFood">' + 
+                foodItem + 
+              '</div>'+ 
+              '<div class="reviewStar">' + 
+                starCount + 
+              '/5</div>' +
+            '</div>'
+          );
+        }) 
+      }
+    }); 
+  };
+
+
+  /* const foodItems = [
     { name: "Spaghetti", rating: 4 },
     { name: "Chicken Parmesan", rating: 5 },
     { name: "Caesar Salad", rating: 3 },
@@ -20,26 +67,31 @@ function VillageUnregistered() {
     { name: "Mushroom Risotto", rating: 5 },
     { name: "Fish and Chips", rating: 3 },
     { name: "Vegan Burger", rating: 4 },
-  ];
+  ]; */
 
   return (
     <>
-      <div className="login-banner">
+      
+      
+       <div className="login-banner">
         <p>Village Dining Hall - {currentMealTime} </p>
       </div>
 
-      <div className="food-list">
+      <div id="reviewBox">
+      </div>
+     {/*  <div className="food-list">
         <div className="food-item">
           <span className="food-avg-rating">Average</span>
-        </div>
+        </div> */}
 
-        {foodItems.map((item) => (
+      {/*   {foodItems.map((item) => (
           <div className="food-item" key={item.name}>
             <span className="food-name">{item.name} </span>
             <span className="food-avg-rating">{item.rating}/5.0</span>
           </div>
         ))}
-      </div>
+      </div> */}
+     
       <div className="button-container">
         <Link to="/homeu">
           <SquareButton type="home" />
