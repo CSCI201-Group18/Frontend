@@ -16,6 +16,10 @@ function EVKRegistered() {
 
   const [foodItems, setFoodItems] = useState([]);
 
+  //review.diningHallID
+  //review.mealName
+  //review.star
+
   const getFoodItems = () => {
     $.ajax({
       url: "http://localhost:8080/api/getDailyMeals",
@@ -26,7 +30,28 @@ function EVKRegistered() {
       },
       success: function(data){
         const items = data.map((item) => {
-          return { name: item.mealName, rating: 0, avg: item.avg_rating };
+          let mealName = item.mealName;
+          let rating = "";
+          console.log(mealName);
+          $.ajax({
+            url: "http://localhost:8080/api/getUserReviews",
+            method: "GET",
+            dataType: "json",
+            async: false,
+            data: {
+            email: {email}
+          },
+          success: function(data){
+            const items = data.map((item) => {
+              console.log(item.diningHallID)
+              console.log(item.mealName)
+              if (item.diningHallID === 3 && item.mealName === mealName){
+                rating =  item.star;
+              } 
+            });
+          }
+         }); 
+          return { name: item.mealName,rating: rating, avg: item.avg_rating };
         });
         setFoodItems(items);
       }
@@ -36,7 +61,7 @@ function EVKRegistered() {
   useEffect(()=>{
     getFoodItems();
   }, []);
-
+  
   return (
     <>
       <div className="login-banner">
