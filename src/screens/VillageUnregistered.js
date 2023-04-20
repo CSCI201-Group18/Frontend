@@ -21,16 +21,21 @@ function VillageUnregistered() {
   const [foodItems, setFoodItems] = useState([]);
 
   const getFoodItems = () => {
+    let currentAvgRating = "";
     $.ajax({
     url : 'http://localhost:8080/api/getDailyMeals',
     method : "GET",
     dataType : 'json',
+    async: false,
     data : {
         id : 1
     },
       success : function(data) {
         const items = data.map((item) => {
-          return {name: item.mealName, avg: item.avg_rating};
+          if (item.avg_rating === 0){
+            currentAvgRating = '-';
+          }
+          return {name: item.mealName, rating: currentAvgRating};
         })
         setFoodItems(items);
       }
