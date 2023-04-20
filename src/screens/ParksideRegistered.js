@@ -5,27 +5,38 @@ import StarRating from "../components/StarRating";
 import "./DiningHallPageRegistered.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../components/UserContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./LoginBox.css";
 import SquareButton from "../components/Buttons/SquareButton";
+import $ from "jquery";
 
 
 
 function ParksideRegistered() {
   const { email } = useContext(UserContext);
   const currentMealTime = getMealTime();
-  const foodItems = [
-    { name: "Spaghetti", rating: 2, avg: 4 },
-    { name: "Chicken Parmesan", rating: 4, avg: 5 },
-    { name: "Caesar Salad", rating: 1, avg: 3 },
-    { name: "Steak Fajitas", rating: 1, avg: 4 },
-    { name: "Beef Stroganoff", rating: 1, avg: 5 },
-    { name: "Honey Glazed Ham", rating: 1, avg: 3 },
-    { name: "Pesto Pizza", rating: 1, avg: 4 },
-    { name: "Mushroom Risotto", rating: 1, avg: 5 },
-    { name: "Fish and Chips", rating: 1, avg: 3 },
-    { name: "Vegan Burger", rating: 1, avg: 4 },
-  ];
+  const [foodItems, setFoodItems] = useState([]);
+
+  const getFoodItems = () => {
+    $.ajax({
+      url: "http://localhost:8080/api/getDailyMeals",
+      method: "GET",
+      dataType: "json",
+      data: {
+        id: 2
+      },
+      success: function(data){
+        const items = data.map((item) => {
+          return { name: item.mealName, rating: 0, avg: item.avg_rating };
+        });
+        setFoodItems(items);
+      }
+    });
+  }
+
+  useEffect(()=>{
+    getFoodItems();
+  }, []);
 
   return (
     <>
