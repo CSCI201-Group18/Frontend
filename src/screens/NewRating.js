@@ -66,6 +66,8 @@ function NewRating() {
       contentType: "application/json",
       data: JSON.stringify(review),
       success: function(obj){
+        alert("The review is added successfully!");
+        history(-1);
         console.log(obj);
       },
       error: function(err){
