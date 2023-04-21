@@ -50,6 +50,7 @@ function Registration() {
       body: JSON.stringify({ userID, username, email, password }),
     })
       .then((response) => {
+        JSON.parse()
         console.log(response);
         if (response.ok) {
           setInvalidRegistration(false);
