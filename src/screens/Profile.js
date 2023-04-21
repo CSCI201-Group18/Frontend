@@ -85,7 +85,7 @@ const Profile = () => {
         <div id="left-banner">
           <img id="profile-pic" src="/profile.png" alt="profile-pic" />
           <button class="email-background" id="banner-icon-1">
-            {"EMAIL"}
+            {email}
           </button>
           <button
             class="button-background"

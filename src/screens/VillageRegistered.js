@@ -6,26 +6,62 @@ import "./DiningHallPageRegistered.css";
 import { Link } from "react-router-dom";
 import "./LoginBox.css";
 import { UserContext } from "../components/UserContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import SquareButton from "../components/Buttons/SquareButton";
-
+import $ from "jquery";
 
 
 function VillageRegistered() {
   const { email } = useContext(UserContext);
   const currentMealTime = getMealTime();
-  const foodItems = [
-    { name: "Spaghetti", rating: 2, avg: 4 },
-    { name: "Chicken Parmesan", rating: 4, avg: 5 },
-    { name: "Caesar Salad", rating: 1, avg: 3 },
-    { name: "Steak Fajitas", rating: 1, avg: 4 },
-    { name: "Beef Stroganoff", rating: 1, avg: 5 },
-    { name: "Honey Glazed Ham", rating: 1, avg: 3 },
-    { name: "Pesto Pizza", rating: 1, avg: 4 },
-    { name: "Mushroom Risotto", rating: 1, avg: 5 },
-    { name: "Fish and Chips", rating: 1, avg: 3 },
-    { name: "Vegan Burger", rating: 1, avg: 4 },
-  ];
+  const [foodItems, setFoodItems] = useState([]);
+
+  //review.diningHallID
+  //review.mealName
+  //review.star
+
+  const getFoodItems = () => {
+    $.ajax({
+      url: "http://localhost:8080/api/getDailyMeals",
+      method: "GET",
+      dataType: "json",
+      data: {
+        id: 1
+      },
+      success: function(data){
+        const items = data.map((item) => {
+          let mealName = item.mealName;
+          let rating = "";
+          console.log(mealName);
+          $.ajax({
+            url: "http://localhost:8080/api/getUserReviews",
+            method: "GET",
+            dataType: "json",
+            async: false,
+            data: {
+            email: {email}
+          },
+          success: function(data){
+            const items = data.map((item) => {
+              console.log(item.diningHallID)
+              console.log(item.mealName)
+              if (item.diningHallID === 1 && item.mealName === mealName){
+                rating =  item.star;
+              } 
+            });
+          }
+         }); 
+          return { name: item.mealName,rating: rating, avg: item.avg_rating };
+        });
+        setFoodItems(items);
+      }
+    });
+  }
+
+  useEffect(()=>{
+    getFoodItems();
+  }, []);
+  
 
   return (
     <>

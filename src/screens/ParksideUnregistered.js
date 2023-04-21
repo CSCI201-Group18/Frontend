@@ -6,21 +6,36 @@ import "./DiningHallPageUnregistered.css";
 import { getMealTime } from "./EVKUnregistered";
 import SquareButton from "../components/Buttons/SquareButton";
 import { Link } from "react-router-dom";
+import $ from 'jquery';
 
 function ParksideUnregistered() {
   const currentMealTime = getMealTime();
-  const foodItems = [
-    { name: "Spaghetti", rating: 4 },
-    { name: "Chicken Parmesan", rating: 5 },
-    { name: "Caesar Salad", rating: 3 },
-    { name: "Steak Fajitas", rating: 4 },
-    { name: "Beef Stroganoff", rating: 5 },
-    { name: "Honey Glazed Ham", rating: 3 },
-    { name: "Pesto Pizza", rating: 4 },
-    { name: "Mushroom Risotto", rating: 5 },
-    { name: "Fish and Chips", rating: 3 },
-    { name: "Vegan Burger", rating: 4 },
-  ];
+  const [foodItems, setFoodItems] = useState([]);
+
+  const getFoodItems = () => {
+    let currentAvgRating = "";
+    $.ajax({
+    url : 'http://localhost:8080/api/getDailyMeals',
+    method : "GET",
+    dataType : 'json',
+    data : {
+        id : 2
+    },
+      success : function(data) {
+        const items = data.map((item) => {
+          if (item.avg_rating === 0){
+            currentAvgRating = '-';
+          }
+          return {name: item.mealName, rating: currentAvgRating};
+        })
+        setFoodItems(items);
+      }
+    }); 
+    
+  };
+  useEffect(()=>{
+      getFoodItems();
+    }, []);
 
   return (
     <>
