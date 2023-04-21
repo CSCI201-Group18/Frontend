@@ -1,0 +1,50 @@
+.registration-box {
+  background-color: #ffffff;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+}
+
+.page-container {
+  margin-top: 50px;
+}
+
+.registration-label {
+  font-family: "Klinic Slab", sans-serif;
+  font-size: 40px;
+}
+
+.registration-page-button {
+  margin-right: 60px;
+  margin-bottom: 20px;
+}
+
+.registration-box input[type="text"],
+.registration-box input[type="password"] {
+  display: block;
+  padding: 5px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  background-color: hsl(0, 48%, 57%);
+}
+
+.registration-box button {
+  background-color: #FFC72C;
+  color: rgb(1, 1, 1);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.registration-box button:hover {
+  background-color: #0050a0;
+}
+
+.invalid-email-text {
+  color: red;
+  font-size: 14px;
+}

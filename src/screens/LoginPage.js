@@ -28,13 +28,23 @@ function LoginPage() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    if (username === "username" && password === "password") {
-      setEmail(username);
-      navigate("/homer");
-    } else {
-      console.log("Wrong login");
-      setInvalidLogin(true);
-    }
+
+    fetch(`http://localhost:8080/api/getUserPass?username=${username}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.password === password) {
+          setEmail(username);
+          navigate("/homer");
+        } else {
+          console.log("Wrong login");
+          setInvalidLogin(true);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user password:", error);
+        setInvalidLogin(true);
+      });
   };
 
   return (
