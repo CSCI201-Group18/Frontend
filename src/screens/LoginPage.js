@@ -29,7 +29,7 @@ function LoginPage() {
   const handleLogin = (event) => {
     event.preventDefault();
 
-    fetch(`http://localhost:8080/api/getUserPass?username=${username}`)
+    fetch(`http://localhost:8080/api/getUserPass?email=${username}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
