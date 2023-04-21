@@ -33,6 +33,13 @@ function ParksideRegistered() {
         const items = data.map((item) => {
           let mealName = item.mealName;
           let rating = "";
+          let currentAvgRating = "";
+          if (item.avg_rating === 0){
+            currentAvgRating = '-';
+          }
+          else {
+            currentAvgRating = item.avg_rating;
+          }
           console.log(mealName);
           $.ajax({
             url: "http://localhost:8080/api/getUserReviews",
@@ -52,7 +59,7 @@ function ParksideRegistered() {
             });
           }
          }); 
-          return { name: item.mealName,rating: rating, avg: item.avg_rating };
+          return { name: item.mealName,rating: rating, avg: currentAvgRating };
         });
         setFoodItems(items);
       }
