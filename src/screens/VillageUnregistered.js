@@ -15,46 +15,36 @@ import $ from 'jquery';
 //2: parkside
 //3: evk
 
+
 function VillageUnregistered() {
   const currentMealTime = getMealTime();
+  const [foodItems, setFoodItems] = useState([]);
 
-
-  const getReview = () => {
+  const getFoodItems = () => {
+    let currentAvgRating = "";
     $.ajax({
-    url : 'http://localhost:8080/api/getHallReviews',
+    url : 'http://localhost:8080/api/getDailyMeals',
     method : "GET",
     dataType : 'json',
+    async: false,
     data : {
         id : 1
     },
-      success : function(results) {
-        $("#reviewBox").html = "";
-        $.each(results, function (index, item){
-          var foodItem = item.mealName;
-          var starCount = item.star;
-          
-          $("#reviewBox").append(
-            '<div class="reviewItem">' + 
-              '<div class ="reviewFood">Food Item</div>'+ 
-              '<div class="reviewStar">Rating</div>' +
-            '</div>'
-          );
-
-          $("#reviewBox").append(
-            '<div class="reviewItem">' + 
-              '<div class ="reviewFood">' + 
-                foodItem + 
-              '</div>'+ 
-              '<div class="reviewStar">' + 
-                starCount + 
-              '/5</div>' +
-            '</div>'
-          );
-        }) 
+      success : function(data) {
+        const items = data.map((item) => {
+          if (item.avg_rating === 0){
+            currentAvgRating = '-';
+          }
+          return {name: item.mealName, rating: currentAvgRating};
+        })
+        setFoodItems(items);
       }
     }); 
+    
   };
-
+  useEffect(()=>{
+      getFoodItems();
+    }, []);
 
   /* const foodItems = [
     { name: "Spaghetti", rating: 4 },
@@ -71,26 +61,23 @@ function VillageUnregistered() {
 
   return (
     <>
-      
-      
        <div className="login-banner">
         <p>Village Dining Hall - {currentMealTime} </p>
       </div>
 
-      <div id="reviewBox">
-      </div>
-     {/*  <div className="food-list">
+    
+       <div className="food-list">
         <div className="food-item">
           <span className="food-avg-rating">Average</span>
-        </div> */}
+        </div> 
 
-      {/*   {foodItems.map((item) => (
+      {foodItems.map((item) => (
           <div className="food-item" key={item.name}>
             <span className="food-name">{item.name} </span>
             <span className="food-avg-rating">{item.rating}/5.0</span>
           </div>
         ))}
-      </div> */}
+      </div>
      
       <div className="button-container">
         <Link to="/homeu">
