@@ -41,6 +41,9 @@ function EVKUnregistered() {
           if (item.avg_rating === 0){
             currentAvgRating = '-';
           }
+          else {
+            currentAvgRating = item.avg_rating;
+          }
           return {name: item.mealName, rating: currentAvgRating};
         })
         setFoodItems(items);

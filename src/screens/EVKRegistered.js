@@ -35,6 +35,13 @@ function EVKRegistered() {
           let mealName = item.mealName;
           let rating = "";
           console.log(mealName);
+          let currentAvgRating = "";
+          if (item.avg_rating === 0){
+            currentAvgRating = '-';
+          }
+          else {
+            currentAvgRating = item.avg_rating;
+          }
           $.ajax({
             url: "http://localhost:8080/api/getUserReviews",
             method: "GET",
@@ -53,7 +60,7 @@ function EVKRegistered() {
             });
           }
          }); 
-          return { name: item.mealName,rating: rating, avg: item.avg_rating };
+          return { name: item.mealName,rating: rating, avg: currentAvgRating};
         });
         setFoodItems(items);
       }
