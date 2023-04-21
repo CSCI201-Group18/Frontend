@@ -49,14 +49,14 @@ function Registration() {
       },
       body: JSON.stringify({ userID, username, email, password }),
     })
-      .then((response) => {
-        JSON.parse()
-        console.log(response);
-        if (response.ok) {
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if ("error" in data && data["error"] === "Email already exists.") {
+          setInvalidRegistration(true);
+        } else {
           setInvalidRegistration(false);
           navigate("/profile");
-        } else {
-          setInvalidRegistration(true);
         }
       })
       .catch((error) => {
