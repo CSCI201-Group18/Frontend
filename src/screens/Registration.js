@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import "./Registration.css";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../components/UserContext";
 
 function Registration() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [regEmail, setRegEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidRegistration, setInvalidRegistration] = useState(false);
   const [username, setUsername] = useState("");
   const userID = 1;
+  const { setEmail } = useContext(UserContext);
 
   const handleEmailChange = (event) => {
     const newEmail = event.target.value;
-    setEmail(newEmail);
+    setRegEmail(newEmail);
     setUsername(newEmail);
     setInvalidEmail(false);
   };
@@ -32,7 +35,9 @@ function Registration() {
   const handleRegistration = (event) => {
     event.preventDefault();
 
-    if (!email.endsWith("@usc.edu")) {
+    const email = regEmail;
+
+    if (!regEmail.endsWith("@usc.edu")) {
       setInvalidEmail(true);
       return;
     }
@@ -55,6 +60,7 @@ function Registration() {
         if ("error" in data && data["error"] === "Email already exists.") {
           setInvalidRegistration(true);
         } else {
+          setEmail(regEmail);
           setInvalidRegistration(false);
           navigate("/profile");
         }
@@ -70,7 +76,7 @@ function Registration() {
       <form onSubmit={handleRegistration} className="registration-box">
         <label className="registration-label">
           USC EMAIL
-          <input type="text" value={email} onChange={handleEmailChange} />
+          <input type="text" value={regEmail} onChange={handleEmailChange} />
         </label>
         <br />
         {invalidEmail && (
