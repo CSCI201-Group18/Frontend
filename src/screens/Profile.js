@@ -27,7 +27,7 @@ const Profile = () => {
       },
       success: function (data) {
         $("#reviewBox").html = "";
-        if (data.length == 0) {
+        if (data.length === 0) {
           alert("You currently have not written any review!");
         } else {
           $.each(data, function (index, item) {
@@ -48,18 +48,18 @@ const Profile = () => {
             }
 
             $("#reviewBox").append(
-              '<div className="reviewItem">' +
-                '<div className="reviewHall">' +
+              '<div class="reviewItem">' +
+                '<div class="reviewHall">' +
                 diningHall +
                 "</div>" +
-                '<div className="reviewFood">' +
+                '<div class="reviewFood">' +
                 food +
                 "</div>" +
-                '<div className="reviewStar">' +
-                '<span className="starStyles">' +
+                '<div class="reviewStar">' +
+                '<span class="starStyles">' +
                 filledStars +
                 "</span>" +
-                '<span className="emptyStarStyles">' +
+                '<span class="emptyStarStyles">' +
                 emptyStars +
                 "</span>" +
                 "</div>" +
@@ -82,7 +82,7 @@ const Profile = () => {
       <div id="body-grid-container">
         <div id="left-banner">
           <img id="profile-pic" src="/profile.png" alt="profile-pic" />
-          <button classNmae="email-background" id="banner-icon-1">
+          <button className="email-background" id="banner-icon-1">
             {email}
           </button>
           <button
