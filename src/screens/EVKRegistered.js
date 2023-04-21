@@ -17,6 +17,8 @@ function EVKRegistered() {
   const [foodItems, setFoodItems] = useState([]);
 
   const getFoodItems = () => {
+
+
     $.ajax({
       url: "http://localhost:8080/api/getDailyMeals",
       method: "GET",
