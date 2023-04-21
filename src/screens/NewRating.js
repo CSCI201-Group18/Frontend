@@ -53,7 +53,7 @@ function NewRating() {
     var foodItem = $('#foodItemSelectBox').val();
     let review = {
       reviewID: 1,
-      email: "test@usc.edu",
+      email: email,
       diningHallID: selectedHall,
       reviewText: "",
       mealName: foodItem,
