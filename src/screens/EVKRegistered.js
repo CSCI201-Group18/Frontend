@@ -41,7 +41,7 @@ function EVKRegistered() {
             dataType: "json",
             async: false,
             data: {
-            email: {email}
+            email: email
           },
           success: function(data){
             const items = data.map((item) => {
