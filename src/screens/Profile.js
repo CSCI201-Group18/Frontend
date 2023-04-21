@@ -5,8 +5,6 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../components/UserContext";
 import $ from "jquery";
 
-
-
 const Profile = () => {
   const navigate = useNavigate();
   const { email } = useContext(UserContext);
@@ -25,53 +23,53 @@ const Profile = () => {
       method: "GET",
       dataType: "json",
       data: {
-        email: email
+        email: email,
       },
       success: function (data) {
         $("#reviewBox").html = "";
-        if(data.length == 0){
-          alert("You currently have not written any review!")
-        }
-        else{
+        if (data.length == 0) {
+          alert("You currently have not written any review!");
+        } else {
           $.each(data, function (index, item) {
             var diningHallID = item.diningHallID;
             var diningHall = "";
             var food = item.mealName;
             var starCount = item.star;
-  
+
             const filledStars = "★".repeat(Math.floor(starCount));
             const emptyStars = "★".repeat(Math.floor(5 - starCount));
-  
-            if(diningHallID === 1){
+
+            if (diningHallID === 1) {
               diningHall = "USC VILLAGE DINING HALL";
-            }
-            else if(diningHallID === 2){
+            } else if (diningHallID === 2) {
               diningHall = "PARKSIDE RESTAURANT & GRILL";
-            }
-            else {
+            } else {
               diningHall = "EVERYBODY'S KITCHEN";
             }
-            
+
             $("#reviewBox").append(
-              '<div class="reviewItem">' +
-                '<div class="reviewHall">' +
-                  diningHall +
-                '</div>' +
-                '<div class="reviewFood">' +
-                  food + 
-                '</div>' +
-                '<div class="reviewStar">' +
-                  '<span class="starStyles">'+filledStars+'</span>' +
-                  '<span class="emptyStarStyles">'+emptyStars+'</span>' +
-                '</div>' +
-              '</div>'
+              '<div className="reviewItem">' +
+                '<div className="reviewHall">' +
+                diningHall +
+                "</div>" +
+                '<div className="reviewFood">' +
+                food +
+                "</div>" +
+                '<div className="reviewStar">' +
+                '<span className="starStyles">' +
+                filledStars +
+                "</span>" +
+                '<span className="emptyStarStyles">' +
+                emptyStars +
+                "</span>" +
+                "</div>" +
+                "</div>"
             );
           });
         }
-      }
+      },
     });
   };
-
 
   useEffect(() => {
     getReview();
@@ -84,19 +82,18 @@ const Profile = () => {
       <div id="body-grid-container">
         <div id="left-banner">
           <img id="profile-pic" src="/profile.png" alt="profile-pic" />
-          <button class="email-background" id="banner-icon-1">
+          <button classNmae="email-background" id="banner-icon-1">
             {email}
           </button>
           <button
-            class="button-background"
+            className="button-background"
             id="banner-icon-2"
             onClick={handleLogout}
           >
             LOGOUT
           </button>
         </div>
-        <div id="reviewBox">
-        </div>
+        <div id="reviewBox"></div>
         <div id="homeButton">
           <SquareButton type="home" onClick={handleHome} />
         </div>

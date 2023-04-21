@@ -7,33 +7,38 @@ function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [invalidEmail, setInvalidEmail] = useState("");
+  const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidRegistration, setInvalidRegistration] = useState(false);
   const [username, setUsername] = useState("");
+  const userID = 1;
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-    setUsername(email);
+    const newEmail = event.target.value;
+    setEmail(newEmail);
+    setUsername(newEmail);
+    setInvalidEmail(false);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setInvalidRegistration(false);
   };
 
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
+    setInvalidRegistration(false);
   };
 
   const handleRegistration = (event) => {
     event.preventDefault();
 
-    if (password !== confirmPassword) {
-      setInvalidRegistration(true);
+    if (!email.endsWith("@usc.edu")) {
+      setInvalidEmail(true);
       return;
     }
 
-    if (!email.endsWith("@usc.edu")) {
-      setInvalidEmail(true);
+    if (password !== confirmPassword) {
+      setInvalidRegistration(true);
       return;
     }
 
@@ -42,7 +47,7 @@ function Registration() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ userID, username, email, password }),
     })
       .then((response) => {
         console.log(response);
