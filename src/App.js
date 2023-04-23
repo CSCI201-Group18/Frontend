@@ -26,35 +26,55 @@ function App() {
         <Route path="/evku" element={<EVKUnregistered />} />
         <Route
           path="/evkr"
-          element={<PrivateRoute path="/evkr" element={<EVKRegistered />} />}
+          element={
+            <PrivateRoute>
+              <EVKRegistered />{" "}
+            </PrivateRoute>
+          }
         />
         <Route path="/parku" element={<ParksideUnregistered />} />
         <Route
           path="/parkr"
           element={
-            <PrivateRoute path="/parkr" element={<ParksideRegistered />} />
+            <PrivateRoute>
+              <ParksideRegistered />
+            </PrivateRoute>
           }
         />
         <Route path="/vilu" element={<VillageUnregistered />} />
         <Route
           path="/vilr"
           element={
-            <PrivateRoute path="/vilr" element={<VillageRegistered />} />
+            <PrivateRoute>
+              <VillageRegistered />
+            </PrivateRoute>
           }
         />
         <Route
           path="/homer"
-          element={<PrivateRoute path="/homer" element={<Home />} />}
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
         />
         <Route
           path="/profile"
-          element={<PrivateRoute path="/profile" element={<Profile />} />}
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
         />
         <Route path="/homeu" element={<HomeGuest />} />
         <Route path="/registration" element={<Registration />} />
         <Route
           path="/newrating"
-          element={<PrivateRoute path="/newrating" element={<NewRating />} />}
+          element={
+            <PrivateRoute>
+              <NewRating />
+            </PrivateRoute>
+          }
         />
         <Route path="*" element={<LoginPage />} />
       </Routes>
