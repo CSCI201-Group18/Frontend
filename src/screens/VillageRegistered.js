@@ -10,7 +10,6 @@ import { useContext, useEffect, useState } from "react";
 import SquareButton from "../components/Buttons/SquareButton";
 import $ from "jquery";
 
-
 function VillageRegistered() {
   const { email } = useContext(UserContext);
   const currentMealTime = getMealTime();
@@ -26,18 +25,17 @@ function VillageRegistered() {
       method: "GET",
       dataType: "json",
       data: {
-        id: 1
+        id: 1,
       },
-      success: function(data){
+      success: function (data) {
         const items = data.map((item) => {
           let mealName = item.mealName;
           let rating = "";
           console.log(mealName);
           let currentAvgRating = "";
-          if (item.avg_rating === 0){
-            currentAvgRating = '-';
-          }
-          else {
+          if (item.avg_rating === 0) {
+            currentAvgRating = "-";
+          } else {
             currentAvgRating = item.avg_rating;
           }
           $.ajax({
@@ -46,29 +44,28 @@ function VillageRegistered() {
             dataType: "json",
             async: false,
             data: {
-            email: email
-          },
-          success: function(data){
-            const items = data.map((item) => {
-              console.log(item.diningHallID)
-              console.log(item.mealName)
-              if (item.diningHallID === 1 && item.mealName === mealName){
-                rating =  item.star;
-              } 
-            });
-          }
-         }); 
-          return { name: item.mealName,rating: rating, avg: currentAvgRating };
+              email: email,
+            },
+            success: function (data) {
+              const items = data.map((item) => {
+                console.log(item.diningHallID);
+                console.log(item.mealName);
+                if (item.diningHallID === 1 && item.mealName === mealName) {
+                  rating = item.star;
+                }
+              });
+            },
+          });
+          return { name: item.mealName, rating: rating, avg: currentAvgRating };
         });
         setFoodItems(items);
-      }
+      },
     });
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getFoodItems();
   }, []);
-  
 
   return (
     <>
@@ -93,12 +90,14 @@ function VillageRegistered() {
           </div>
         ))}
       </div>
-      <Link to="/newrating">
-        <button className="new-rating-button">New Rating</button>
-      </Link>
-      <Link to="/homer">
+      <div className="button-container">
+        <Link to="/newrating">
+          <button className="new-rating-button">New Rating</button>
+        </Link>
+        <Link to="/homer">
           <SquareButton type="home" />
-      </Link>
+        </Link>
+      </div>
     </>
   );
 }

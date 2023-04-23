@@ -16,7 +16,7 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [invalidLogin, setInvalidLogin] = useState(false);
-  const { setEmail } = useContext(UserContext);
+  const { setEmail, setIsLoggedIn } = useContext(UserContext);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -35,6 +35,7 @@ function LoginPage() {
         console.log(data);
         if (data.password === password) {
           setEmail(username);
+          setIsLoggedIn(true);
           navigate("/homer");
         } else {
           console.log("Wrong login");

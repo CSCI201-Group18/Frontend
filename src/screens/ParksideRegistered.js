@@ -10,8 +10,6 @@ import "./LoginBox.css";
 import SquareButton from "../components/Buttons/SquareButton";
 import $ from "jquery";
 
-
-
 function ParksideRegistered() {
   const { email } = useContext(UserContext);
   const currentMealTime = getMealTime();
@@ -27,17 +25,16 @@ function ParksideRegistered() {
       method: "GET",
       dataType: "json",
       data: {
-        id: 2
+        id: 2,
       },
-      success: function(data){
+      success: function (data) {
         const items = data.map((item) => {
           let mealName = item.mealName;
           let rating = "";
           let currentAvgRating = "";
-          if (item.avg_rating === 0){
-            currentAvgRating = '-';
-          }
-          else {
+          if (item.avg_rating === 0) {
+            currentAvgRating = "-";
+          } else {
             currentAvgRating = item.avg_rating;
           }
           console.log(mealName);
@@ -47,29 +44,29 @@ function ParksideRegistered() {
             dataType: "json",
             async: false,
             data: {
-            email: email
-          },
-          success: function(data){
-            const items = data.map((item) => {
-              console.log(item.diningHallID)
-              console.log(item.mealName)
-              if (item.diningHallID === 2 && item.mealName === mealName){
-                rating =  item.star;
-              } 
-            });
-          }
-         }); 
-          return { name: item.mealName,rating: rating, avg: currentAvgRating };
+              email: email,
+            },
+            success: function (data) {
+              const items = data.map((item) => {
+                console.log(item.diningHallID);
+                console.log(item.mealName);
+                if (item.diningHallID === 2 && item.mealName === mealName) {
+                  rating = item.star;
+                }
+              });
+            },
+          });
+          return { name: item.mealName, rating: rating, avg: currentAvgRating };
         });
         setFoodItems(items);
-      }
+      },
     });
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getFoodItems();
   }, []);
-  
+
   return (
     <>
       <div className="login-banner">
@@ -93,12 +90,14 @@ function ParksideRegistered() {
           </div>
         ))}
       </div>
-      <Link to="/newrating">
-        <button className="new-rating-button">New Rating</button>
-      </Link>
-      <Link to="/homer">
+      <div className="button-container">
+        <Link to="/newrating">
+          <button className="new-rating-button">New Rating</button>
+        </Link>
+        <Link to="/homer">
           <SquareButton type="home" />
-      </Link>
+        </Link>
+      </div>
     </>
   );
 }

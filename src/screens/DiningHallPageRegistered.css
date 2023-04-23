@@ -41,7 +41,7 @@
 }
 
 .new-rating-button {
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
   background-color: #990000;
@@ -55,14 +55,15 @@
   height: 80px;
   width: 160px;
   font-size: large;
+  margin-right: 80px;
 }
 
 .button-container {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .square-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  margin-left: 10px;
 }

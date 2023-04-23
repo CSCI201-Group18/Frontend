@@ -16,6 +16,7 @@ import Registration from "./screens/Registration";
 import NewRating from "./screens/NewRating";
 import { useState } from "react";
 import { UserProvider } from "./components/UserContext";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -23,16 +24,38 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/evku" element={<EVKUnregistered />} />
-        <Route path="/evkr" element={<EVKRegistered />} />
+        <Route
+          path="/evkr"
+          element={<PrivateRoute path="/evkr" element={<EVKRegistered />} />}
+        />
         <Route path="/parku" element={<ParksideUnregistered />} />
-        <Route path="/parkr" element={<ParksideRegistered />} />
+        <Route
+          path="/parkr"
+          element={
+            <PrivateRoute path="/parkr" element={<ParksideRegistered />} />
+          }
+        />
         <Route path="/vilu" element={<VillageUnregistered />} />
-        <Route path="/vilr" element={<VillageRegistered />} />
-        <Route path="/homer" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/vilr"
+          element={
+            <PrivateRoute path="/vilr" element={<VillageRegistered />} />
+          }
+        />
+        <Route
+          path="/homer"
+          element={<PrivateRoute path="/homer" element={<Home />} />}
+        />
+        <Route
+          path="/profile"
+          element={<PrivateRoute path="/profile" element={<Profile />} />}
+        />
         <Route path="/homeu" element={<HomeGuest />} />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/newrating" element={<NewRating />} />
+        <Route
+          path="/newrating"
+          element={<PrivateRoute path="/newrating" element={<NewRating />} />}
+        />
         <Route path="*" element={<LoginPage />} />
       </Routes>
     </UserProvider>
